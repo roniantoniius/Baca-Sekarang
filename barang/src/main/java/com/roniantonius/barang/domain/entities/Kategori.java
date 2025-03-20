@@ -1,5 +1,7 @@
 package com.roniantonius.barang.domain.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -8,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +32,9 @@ public class Kategori {
 	
 	@Column(nullable = false, unique = true)
 	private String nama;
+	
+	@OneToMany(mappedBy = "kategori")
+	private List<Post> posts = new ArrayList<>();
 
 	@Override
 	public int hashCode() {
