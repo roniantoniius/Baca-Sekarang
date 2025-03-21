@@ -2,6 +2,7 @@ package com.roniantonius.barang.security;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -57,6 +58,11 @@ public class BarangUserDetails implements UserDetails{
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	public UUID getId() {
+		// TODO Auto-generated method stub
+		return user.getId();
 	}
 	
 }

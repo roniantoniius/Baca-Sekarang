@@ -10,6 +10,7 @@ import com.roniantonius.barang.domain.entities.Kategori;
 import com.roniantonius.barang.repositories.KategoriRepository;
 import com.roniantonius.barang.services.KategoriService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -36,10 +37,15 @@ public class KategoriServiceImpl implements KategoriService {
 		Optional<Kategori> kategoriOptional = kategoriRepository.findById(id);
 		if (kategoriOptional.isPresent()) {
 			if(!kategoriOptional.get().getPosts().isEmpty()) {
-				throw new IllegalArgumentException("Kategori tersebut masih ada Post yang berasosiasi.");
+				throw new IllegalStateException("Kategori tersebut masih ada Post yang berasosiasi.");
 			}
 			kategoriRepository.deleteById(id);
 		}
+	}
+	@Override
+	public Kategori getKategoriById(UUID id) {
+		// TODO Auto-generated method stub
+		return kategoriRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Kategori tidak ditemukan"));
 	}
 
 }

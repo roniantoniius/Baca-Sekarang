@@ -9,4 +9,5 @@ public interface KategoriService {
 	List<Kategori> listKategori();
 	Kategori createKategori(Kategori kategori);
 	void deleteKategori(UUID id);
+	Kategori getKategoriById(UUID id);
 }
