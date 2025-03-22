@@ -70,4 +70,15 @@ public class TagServiceImpl implements TagService{
 		// TODO Auto-generated method stub
 		return tagRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Tag not found id " + id));
 	}
+
+	@Override
+	public List<Tag> getTagByIds(Set<UUID> ids) {
+		// TODO Auto-generated method stub
+		List<Tag> tags = tagRepository.findAllById(ids);
+		if (tags.size() != ids.size()) {
+			throw new EntityNotFoundException("Tidak semua tag yang diinginkan ditemukan");
+		}
+		return tags;
+	}
+
 }

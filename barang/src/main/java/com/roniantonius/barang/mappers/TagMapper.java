@@ -1,6 +1,5 @@
 package com.roniantonius.barang.mappers;
 
-import java.util.List;
 import java.util.Set;
 
 import org.mapstruct.Mapper;
